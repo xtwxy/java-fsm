@@ -1,7 +1,7 @@
 package fsm.core;
 
 public interface Context {
-	void send(Event evt);
+	void accept(Event evt);
 	boolean stopped();
-	ReplyEvent reply();
+	void start();
 }

@@ -24,13 +24,13 @@ public class ReplyEvent implements Event {
 	}
 
 	@Override
-	public State apply(Context ctx, State s) {
-		return s.accept(ctx, this);
+	public void apply(Context ctx, State s) {
+		ReplyAcceptor acceptor = (ReplyAcceptor) s;
+		acceptor.accept(ctx, this);
 	}
 
 	@Override
 	public Context source() {
 		return this.source;
 	}
-
 }

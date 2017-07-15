@@ -15,23 +15,13 @@ public class ThreadedDeadlineTimerTest {
 		ThreadedTimer timer = new ThreadedTimer();
 		TimeEventQueue queue = new TimeEventQueue(timer);
 
-		Context reply = new Context() {
+		Context reply = new Context.Adapter() {
 			@Override
 			public void accept(Event evt) {
 				response = evt;
 				synchronized (ThreadedDeadlineTimerTest.this) {
 					ThreadedDeadlineTimerTest.this.notifyAll();
 				}
-			}
-
-			@Override
-			public boolean stopped() {
-				return false;
-			}
-
-			@Override
-			public void start() {
-
 			}
 		};
 

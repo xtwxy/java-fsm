@@ -33,4 +33,8 @@ public class ThreadedTimer implements Context {
 	public void start() {
 		setTimerAcceptor.enter(this);
 	}
+	
+	public void shutdown() {
+		executor.shutdown();
+	}
 }

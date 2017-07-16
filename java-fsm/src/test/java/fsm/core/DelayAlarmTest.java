@@ -2,7 +2,7 @@ package fsm.core;
 
 import org.junit.Test;
 
-import fsm.core.mock.delay.DelayAlarmMachine;
+import fsm.core.mock.delay.DelayAlarmStateSet;
 import fsm.core.mock.delay.ThreadedTimer;
 import fsm.timer.SetDeadlineTimer;
 import fsm.timer.TimeEventQueue;
@@ -12,7 +12,7 @@ public class DelayAlarmTest {
 	public void testDelayAlarm() {
 		TimeEventQueue timer = new TimeEventQueue(new ThreadedTimer());
 
-		Machine src = new DelayAlarmMachine();
+		StateSet src = new DelayAlarmStateSet();
 		SetDeadlineTimer evt = new SetDeadlineTimer(src, 1000);
 		timer.send(evt);
 	}

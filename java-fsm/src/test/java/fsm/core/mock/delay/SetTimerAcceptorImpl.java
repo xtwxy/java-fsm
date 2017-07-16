@@ -3,17 +3,17 @@ package fsm.core.mock.delay;
 import java.util.concurrent.ThreadPoolExecutor;
 
 import fsm.core.Event;
-import fsm.core.Machine;
+import fsm.core.StateSet;
 import fsm.timer.DeadlineTimeout;
 import fsm.timer.SetDeadlineTimer;
 import fsm.timer.SetDeadlineTimerAcceptor;
 
 public class SetTimerAcceptorImpl implements SetDeadlineTimerAcceptor {
 
-	private final Machine machine;
+	private final StateSet machine;
 	private final ThreadPoolExecutor executor;
 
-	public SetTimerAcceptorImpl(Machine m, ThreadPoolExecutor executor) {
+	public SetTimerAcceptorImpl(StateSet m, ThreadPoolExecutor executor) {
 		this.machine = m;
 		this.executor = executor;
 	}

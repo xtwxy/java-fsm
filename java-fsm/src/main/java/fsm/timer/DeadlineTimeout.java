@@ -1,13 +1,13 @@
 package fsm.timer;
 
 import fsm.core.Event;
-import fsm.core.Machine;
+import fsm.core.StateSet;
 import fsm.core.State;
 
 public final class DeadlineTimeout implements Event {
-	private final Machine source;
+	private final StateSet source;
 
-	public DeadlineTimeout(Machine src) {
+	public DeadlineTimeout(StateSet src) {
 		this.source = src;
 	}
 
@@ -19,7 +19,7 @@ public final class DeadlineTimeout implements Event {
 	}
 
 	@Override
-	public Machine source() {
+	public StateSet source() {
 		return source;
 	}
 }

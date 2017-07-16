@@ -1,13 +1,12 @@
 package fsm.core.mock.delay;
 
 import fsm.core.Event;
-import fsm.core.Machine;
 import fsm.core.State;
 
 public class DelayDownState implements State {
-	private final Machine machine;
+	private final DelayAlarmStateSet machine;
 
-	public DelayDownState(Machine m) {
+	public DelayDownState(DelayAlarmStateSet m) {
 		this.machine = m;
 	}
 

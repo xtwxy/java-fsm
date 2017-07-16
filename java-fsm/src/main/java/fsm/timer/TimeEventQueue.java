@@ -2,12 +2,12 @@ package fsm.timer;
 
 import fsm.core.Event;
 import fsm.core.EventQueue;
-import fsm.core.Machine;
+import fsm.core.StateSet;
 
-public class TimeEventQueue implements EventQueue {
-	private final Machine initial;
+public class TimeEventQueue extends EventQueue.Adaptor {
+	private final StateSet initial;
 
-	public TimeEventQueue(Machine initial) {
+	public TimeEventQueue(StateSet initial) {
 		this.initial = initial;
 	}
 

@@ -1,5 +1,5 @@
 package fsm.core;
 
 public interface ReplyAcceptor extends State {
-	State acceptReply(Machine m, ReplyEvent evt);
+	State acceptReply(StateSet m, ReplyEvent evt);
 }

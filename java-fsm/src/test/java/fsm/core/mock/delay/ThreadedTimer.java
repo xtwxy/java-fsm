@@ -5,11 +5,11 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import fsm.core.Machine;
+import fsm.core.StateSet;
 import fsm.core.State;
 import fsm.core.Event;
 
-public class ThreadedTimer implements Machine {
+public class ThreadedTimer implements StateSet {
 	private final BlockingQueue<Runnable> workQueue;
 	private final ThreadPoolExecutor executor;
 	private final SetTimerAcceptorImpl setTimerAcceptor;

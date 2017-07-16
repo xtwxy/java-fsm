@@ -1,6 +1,6 @@
 package fsm.core;
 
-public interface Machine {
+public interface StateSet {
 	State state();
 
 	boolean accept(Event evt);
@@ -9,7 +9,7 @@ public interface Machine {
 
 	void start();
 
-	public abstract class Adapter implements Machine {
+	public abstract class Adapter implements StateSet {
 
 		@Override
 		public boolean accept(Event evt) {

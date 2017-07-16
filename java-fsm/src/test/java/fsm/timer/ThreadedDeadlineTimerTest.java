@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fsm.core.Event;
-import fsm.core.Machine;
+import fsm.core.StateSet;
 import fsm.core.mock.delay.ThreadedTimer;
 
 public class ThreadedDeadlineTimerTest {
@@ -15,7 +15,7 @@ public class ThreadedDeadlineTimerTest {
 		ThreadedTimer timer = new ThreadedTimer();
 		TimeEventQueue queue = new TimeEventQueue(timer);
 
-		Machine reply = new Machine.Adapter() {
+		StateSet reply = new StateSet.Adapter() {
 			@Override
 			public boolean accept(Event evt) {
 				response = evt;

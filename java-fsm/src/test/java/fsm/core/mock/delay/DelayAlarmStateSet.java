@@ -1,10 +1,10 @@
 package fsm.core.mock.delay;
 
 import fsm.core.Event;
-import fsm.core.Machine;
+import fsm.core.StateSet;
 import fsm.core.State;
 
-public class DelayAlarmMachine implements Machine {
+public class DelayAlarmStateSet implements StateSet {
 
 	@Override
 	public boolean accept(Event evt) {

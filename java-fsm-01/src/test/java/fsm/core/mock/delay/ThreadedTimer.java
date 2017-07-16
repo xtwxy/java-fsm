@@ -5,11 +5,10 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import fsm.core.Machine;
-import fsm.core.State;
+import fsm.core.Context;
 import fsm.core.Event;
 
-public class ThreadedTimer implements Machine {
+public class ThreadedTimer implements Context {
 	private final BlockingQueue<Runnable> workQueue;
 	private final ThreadPoolExecutor executor;
 	private final SetTimerAcceptorImpl setTimerAcceptor;
@@ -17,12 +16,12 @@ public class ThreadedTimer implements Machine {
 	public ThreadedTimer() {
 		workQueue = new ArrayBlockingQueue<>(8);
 		executor = new ThreadPoolExecutor(4, 8, 60, TimeUnit.SECONDS, workQueue);
-		setTimerAcceptor = new SetTimerAcceptorImpl(this, executor);
+		setTimerAcceptor = new SetTimerAcceptorImpl(executor);
 	}
 
 	@Override
-	public boolean accept(Event evt) {
-		return evt.apply(setTimerAcceptor);
+	public void accept(Event evt) {
+		evt.apply(this, setTimerAcceptor);
 	}
 
 	@Override
@@ -32,14 +31,10 @@ public class ThreadedTimer implements Machine {
 
 	@Override
 	public void start() {
+		setTimerAcceptor.enter(this);
 	}
 	
 	public void shutdown() {
 		executor.shutdown();
-	}
-
-	@Override
-	public State state() {
-		return setTimerAcceptor;
 	}
 }

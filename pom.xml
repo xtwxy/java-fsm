@@ -18,6 +18,7 @@
 
 	<modules>
 		<module>java-fsm</module>
+		<module>java-fsm-01</module>
 		<module>settings</module>
 	</modules>
 </project>

@@ -2,24 +2,23 @@ package fsm.core.mock.delay;
 
 import java.util.concurrent.ThreadPoolExecutor;
 
+import fsm.core.Context;
 import fsm.core.Event;
-import fsm.core.Machine;
+import fsm.nfa.State;
 import fsm.timer.DeadlineTimeout;
 import fsm.timer.SetDeadlineTimer;
 import fsm.timer.SetDeadlineTimerAcceptor;
 
 public class SetTimerAcceptorImpl implements SetDeadlineTimerAcceptor {
 
-	private final Machine machine;
 	private final ThreadPoolExecutor executor;
 
-	public SetTimerAcceptorImpl(Machine m, ThreadPoolExecutor executor) {
-		this.machine = m;
+	public SetTimerAcceptorImpl(ThreadPoolExecutor executor) {
 		this.executor = executor;
 	}
 
 	@Override
-	public void acceptSetDeadlineTimer(SetDeadlineTimer evt) {
+	public State acceptSetDeadlineTimer(Context ctx, SetDeadlineTimer evt) {
 		Runnable r = new Runnable() {
 			@Override
 			public void run() {
@@ -30,14 +29,24 @@ public class SetTimerAcceptorImpl implements SetDeadlineTimerAcceptor {
 						e.printStackTrace();
 					}
 				}
-				evt.source().accept(new DeadlineTimeout(machine));
+				evt.source().accept(new DeadlineTimeout(ctx));
 			}
 		};
 		executor.execute(r);
+		return this;
 	}
 
 	@Override
-	public boolean accept(Event evt) {
-		return false;
+	public State accept(Context ctx, Event evt) {
+		return null;
 	}
+
+	@Override
+	public void enter(Context ctx) {
+	}
+
+	@Override
+	public void leave(Context ctx) {
+	}
+
 }

@@ -3,8 +3,8 @@ package fsm.timer;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fsm.core.Context;
 import fsm.core.Event;
-import fsm.core.Machine;
 import fsm.core.mock.delay.ThreadedTimer;
 
 public class ThreadedDeadlineTimerTest {
@@ -15,14 +15,13 @@ public class ThreadedDeadlineTimerTest {
 		ThreadedTimer timer = new ThreadedTimer();
 		TimeEventQueue queue = new TimeEventQueue(timer);
 
-		Machine reply = new Machine.Adapter() {
+		Context reply = new Context.Adapter() {
 			@Override
-			public boolean accept(Event evt) {
+			public void accept(Event evt) {
 				response = evt;
 				synchronized (ThreadedDeadlineTimerTest.this) {
 					ThreadedDeadlineTimerTest.this.notifyAll();
 				}
-				return true;
 			}
 		};
 

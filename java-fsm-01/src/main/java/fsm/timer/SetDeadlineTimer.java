@@ -1,27 +1,26 @@
 package fsm.timer;
 
+import fsm.core.Context;
 import fsm.core.Event;
-import fsm.core.Machine;
-import fsm.core.State;
+import fsm.nfa.State;
 
 public final class SetDeadlineTimer implements Event {
-	private final Machine source;
+	private final Context source;
 	private final long deadline;
 
-	public SetDeadlineTimer(Machine src, long millsecFromNow) {
+	public SetDeadlineTimer(Context src, long millsecFromNow) {
 		this.source = src;
 		this.deadline = System.currentTimeMillis() + millsecFromNow;
 	}
 
 	@Override
-	public boolean apply(State s) {
+	public void apply(Context ctx, State s) {
 		SetDeadlineTimerAcceptor acceptor = (SetDeadlineTimerAcceptor) s;
-		acceptor.acceptSetDeadlineTimer(this);
-		return true;
+		acceptor.acceptSetDeadlineTimer(ctx, this);
 	}
 
 	@Override
-	public Machine source() {
+	public Context source() {
 		return source;
 	}
 

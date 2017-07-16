@@ -1,25 +1,24 @@
 package fsm.timer;
 
+import fsm.core.Context;
 import fsm.core.Event;
-import fsm.core.Machine;
-import fsm.core.State;
+import fsm.nfa.State;
 
 public final class DeadlineTimeout implements Event {
-	private final Machine source;
+	private final Context source;
 
-	public DeadlineTimeout(Machine src) {
+	public DeadlineTimeout(Context src) {
 		this.source = src;
 	}
 
 	@Override
-	public boolean apply(State s) {
+	public void apply(Context ctx, State s) {
 		DeadlineTimeoutAcceptor acceptor = (DeadlineTimeoutAcceptor) s;
-		acceptor.acceptDeadlineTimeout(this);
-		return true;
+		acceptor.acceptDeadlineTimeout(ctx, this);
 	}
 
 	@Override
-	public Machine source() {
+	public Context source() {
 		return source;
 	}
 }

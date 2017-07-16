@@ -4,34 +4,34 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import fsm.core.Event;
-import fsm.core.Machine;
+import fsm.core.Context;
 import fsm.core.TopicQueue;
 
 public class AlarmQueue implements TopicQueue {
-	private final Set<Machine> subscribers;
+	private final Set<Context> subscribers;
 
 	public AlarmQueue() {
 		this.subscribers = new TreeSet<>();
 	}
 
 	@Override
-	public void subscribe(Machine m) {
-		this.subscribers.add(m);
+	public void subscribe(Context ctx) {
+		this.subscribers.add(ctx);
 	}
 
 	@Override
-	public void unsubscribe(Machine m) {
-		this.subscribers.remove(m);
+	public void unsubscribe(Context ctx) {
+		this.subscribers.remove(ctx);
 	}
 
 	@Override
 	public void send(Event evt) {
 	}
-
+	
 	@Override
 	public void publish(Event evt) {
-		for (Machine m : this.subscribers) {
-			m.accept(evt);
+		for (Context ctx : this.subscribers) {
+			ctx.accept(evt);
 		}
 	}
 }

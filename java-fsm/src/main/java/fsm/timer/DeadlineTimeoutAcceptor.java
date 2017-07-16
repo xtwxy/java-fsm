@@ -1,9 +1,15 @@
 package fsm.timer;
 
-import fsm.core.Context;
 import fsm.core.Event;
-import fsm.nfa.State;
+import fsm.core.State;
 
 public interface DeadlineTimeoutAcceptor extends State {
-	State acceptDeadlineTimeout(Context ctx, Event evt);
+	void acceptDeadlineTimeout(Event evt);
+
+	public abstract class Adaptor implements DeadlineTimeoutAcceptor {
+		@Override
+		public boolean accept(Event evt) {
+			return false;
+		}
+	}
 }

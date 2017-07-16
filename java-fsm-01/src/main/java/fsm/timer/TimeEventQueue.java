@@ -1,13 +1,13 @@
 package fsm.timer;
 
+import fsm.core.Context;
 import fsm.core.Event;
 import fsm.core.EventQueue;
-import fsm.core.Machine;
 
 public class TimeEventQueue implements EventQueue {
-	private final Machine initial;
+	private final Context initial;
 
-	public TimeEventQueue(Machine initial) {
+	public TimeEventQueue(Context initial) {
 		this.initial = initial;
 	}
 

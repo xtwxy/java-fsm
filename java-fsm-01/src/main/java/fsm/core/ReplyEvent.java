@@ -3,12 +3,14 @@ package fsm.core;
 import java.util.ArrayList;
 import java.util.List;
 
+import fsm.nfa.State;
+
 public class ReplyEvent implements Event {
 
-	private Machine source;
+	private Context source;
 	private List<Object> contents;
 
-	public ReplyEvent(Machine src) {
+	public ReplyEvent(Context src) {
 		this.source = src;
 		this.contents = new ArrayList<>();
 	}
@@ -22,14 +24,13 @@ public class ReplyEvent implements Event {
 	}
 
 	@Override
-	public boolean apply(State s) {
+	public void apply(Context ctx, State s) {
 		ReplyAcceptor acceptor = (ReplyAcceptor) s;
-		acceptor.accept(this);
-		return true;
+		acceptor.accept(ctx, this);
 	}
 
 	@Override
-	public Machine source() {
+	public Context source() {
 		return this.source;
 	}
 }

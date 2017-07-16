@@ -13,6 +13,6 @@ public class TimeEventQueue extends EventQueue.Adaptor {
 
 	@Override
 	public void send(Event evt) {
-		initial.accept(evt);
+		evt.apply(initial.state());
 	}
 }

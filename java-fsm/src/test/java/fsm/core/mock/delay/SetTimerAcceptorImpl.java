@@ -30,7 +30,7 @@ public class SetTimerAcceptorImpl implements SetDeadlineTimerAcceptor {
 						e.printStackTrace();
 					}
 				}
-				evt.source().accept(new DeadlineTimeout(machine));
+				evt.source().state().accept(new DeadlineTimeout(machine));
 			}
 		};
 		executor.execute(r);

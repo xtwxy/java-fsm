@@ -1,15 +1,9 @@
 package fsm.core.mock.delay;
 
-import fsm.core.Event;
-import fsm.core.StateSet;
 import fsm.core.State;
+import fsm.core.StateSet;
 
 public class DelayAlarmStateSet implements StateSet {
-
-	@Override
-	public boolean accept(Event evt) {
-		return state().accept(evt);
-	}
 
 	@Override
 	public boolean stopped() {

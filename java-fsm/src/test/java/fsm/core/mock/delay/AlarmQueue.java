@@ -10,7 +10,7 @@ public class AlarmQueue extends EventQueue.Adaptor implements TopicQueue {
 	@Override
 	public void publish(Event evt) {
 		for (StateSet m : this.machines) {
-			m.accept(evt);
+			m.state().accept(evt);
 		}
 	}
 }

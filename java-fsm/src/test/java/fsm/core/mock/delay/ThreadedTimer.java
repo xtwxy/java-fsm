@@ -5,9 +5,8 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import fsm.core.StateSet;
 import fsm.core.State;
-import fsm.core.Event;
+import fsm.core.StateSet;
 
 public class ThreadedTimer implements StateSet {
 	private final BlockingQueue<Runnable> workQueue;
@@ -21,11 +20,6 @@ public class ThreadedTimer implements StateSet {
 	}
 
 	@Override
-	public boolean accept(Event evt) {
-		return evt.apply(setTimerAcceptor);
-	}
-
-	@Override
 	public boolean stopped() {
 		return executor.isShutdown();
 	}
@@ -33,7 +27,7 @@ public class ThreadedTimer implements StateSet {
 	@Override
 	public void start() {
 	}
-	
+
 	public void shutdown() {
 		executor.shutdown();
 	}

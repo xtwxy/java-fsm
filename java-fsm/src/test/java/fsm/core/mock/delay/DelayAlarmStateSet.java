@@ -4,7 +4,8 @@ import fsm.core.State;
 import fsm.core.StateSet;
 
 public class DelayAlarmStateSet implements StateSet {
-
+	
+	
 	@Override
 	public boolean stopped() {
 		return (state() == null);

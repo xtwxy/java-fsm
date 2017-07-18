@@ -39,6 +39,13 @@
 	</properties>
 	<!-- <repositories> <repository> <id>my-internal-site</id> <url>http://myserver/repo</url> 
 		</repository> </repositories> -->
+	<dependencies>
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>2.12.2</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<extensions>
 			<extension>
@@ -81,7 +88,7 @@
 						</goals>
 					</execution>
 				</executions>
-                        </plugin>
+			</plugin>
 			<plugin>
 				<groupId>org.scala-tools</groupId>
 				<artifactId>maven-scala-plugin</artifactId>

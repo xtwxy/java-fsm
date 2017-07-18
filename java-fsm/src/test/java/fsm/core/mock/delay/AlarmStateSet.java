@@ -1,9 +1,9 @@
 package fsm.core.mock.delay;
 
 import fsm.core.State;
-import fsm.core.StateSet;
+import fsm.core.StateMachine;
 
-public class AlarmStateSet implements StateSet {
+public class AlarmStateSet implements StateMachine {
 	private ReceiveState receiveState;
 	private DelayState delayState;
 	private NotificationState notificationState;

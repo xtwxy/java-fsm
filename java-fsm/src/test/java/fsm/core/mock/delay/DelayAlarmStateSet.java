@@ -2,9 +2,9 @@ package fsm.core.mock.delay;
 
 import fsm.core.Event;
 import fsm.core.State;
-import fsm.core.StateSet;
+import fsm.core.StateMachine;
 
-public class DelayAlarmStateSet extends StateSet.Adapter {
+public class DelayAlarmStateSet extends StateMachine.Adapter {
 	private Event response;
 	private final State state = new State() {
 

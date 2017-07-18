@@ -2,9 +2,9 @@ package fsm.timer;
 
 import fsm.core.Event;
 import fsm.core.State;
-import fsm.core.StateSet;
+import fsm.core.StateMachine;
 
-public class DeadlineTimerStateSet extends StateSet.Adapter {
+public class DeadlineTimerStateSet extends StateMachine.Adapter {
 	private Event response;
 	private final State state = new State() {
 

@@ -1,13 +1,13 @@
 package fsm.core;
 
-public interface StateSet {
+public interface StateMachine {
 	State state();
 
 	boolean stopped();
 
 	void start();
 
-	public abstract class Adapter implements StateSet {
+	public abstract class Adapter implements StateMachine {
 
 		@Override
 		public boolean stopped() {

@@ -5,10 +5,10 @@ import java.util.List;
 
 public class ReplyEvent implements Event {
 
-	private StateSet source;
+	private StateMachine source;
 	private List<Object> contents;
 
-	public ReplyEvent(StateSet src) {
+	public ReplyEvent(StateMachine src) {
 		this.source = src;
 		this.contents = new ArrayList<>();
 	}
@@ -29,7 +29,7 @@ public class ReplyEvent implements Event {
 	}
 
 	@Override
-	public StateSet source() {
+	public StateMachine source() {
 		return this.source;
 	}
 }

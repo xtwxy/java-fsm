@@ -2,17 +2,17 @@ package fsm.timer;
 
 import fsm.core.Event;
 import fsm.core.EventQueue;
-import fsm.core.StateSet;
+import fsm.core.StateMachine;
 
 public class TimeEventQueue extends EventQueue.Adaptor {
-	private final StateSet initial;
+	private final StateMachine queueHandler;
 
-	public TimeEventQueue(StateSet initial) {
-		this.initial = initial;
+	public TimeEventQueue(StateMachine handler) {
+		this.queueHandler = handler;
 	}
 
 	@Override
 	public void send(Event evt) {
-		evt.apply(initial.state());
+		evt.apply(queueHandler.state());
 	}
 }

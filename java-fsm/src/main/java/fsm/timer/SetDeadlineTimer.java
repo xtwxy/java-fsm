@@ -1,14 +1,14 @@
 package fsm.timer;
 
 import fsm.core.Event;
-import fsm.core.StateSet;
+import fsm.core.StateMachine;
 import fsm.core.State;
 
 public final class SetDeadlineTimer implements Event {
-	private final StateSet source;
+	private final StateMachine source;
 	private final long deadline;
 
-	public SetDeadlineTimer(StateSet src, long millsecFromNow) {
+	public SetDeadlineTimer(StateMachine src, long millsecFromNow) {
 		this.source = src;
 		this.deadline = System.currentTimeMillis() + millsecFromNow;
 	}
@@ -21,7 +21,7 @@ public final class SetDeadlineTimer implements Event {
 	}
 
 	@Override
-	public StateSet source() {
+	public StateMachine source() {
 		return source;
 	}
 

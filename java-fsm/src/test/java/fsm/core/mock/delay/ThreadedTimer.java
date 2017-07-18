@@ -6,9 +6,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import fsm.core.State;
-import fsm.core.StateSet;
+import fsm.core.StateMachine;
 
-public class ThreadedTimer implements StateSet {
+public class ThreadedTimer implements StateMachine {
 	private final BlockingQueue<Runnable> workQueue;
 	private final ThreadPoolExecutor executor;
 	private final SetTimerAcceptorImpl setTimerAcceptor;
